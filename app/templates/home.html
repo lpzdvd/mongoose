@@ -31,14 +31,14 @@
             {% else %}
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Bienvenid@ {{ user }}</h3>
+                    <h3 class="panel-title">Bienvenid@ {{ user.nombre }}</h3>
                 </div>
                 
                 <div class="panel-body">
                     <ul class="nav nav-stacked">
                         <li class="active"> <a href="{{ url_for('alumnos_edicion_view', alumno = g.user) }}"><i class="glyphicon glyphicon-pencil"></i>
-                          Editar mis datos personales</a></li>
-                        <li><a href="{{ url_for('proyectos_listar_view') }}"><i class="glyphicon glyphicon-list"></i> Solicitar un proyecto</a></li>
+                          Mis datos personales</a></li>
+                        <li><a href="{{ url_for('proyectos_listar_view') }}"><i class="glyphicon glyphicon-list"></i> Solicitud de proyectos</a></li>
                         <li><a href="{{ url_for('proyectos_resumen_view') }}"><i class="glyphicon glyphicon-book"></i> Mis proyectos</a></li>
                         <li><a href="{{ url_for('logout_view') }}"><i class="glyphicon glyphicon-off"></i> Desconectar</a></li>
                     </ul>
