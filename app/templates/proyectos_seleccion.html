@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+{% block proyectos_seleccion %}
+  <div class="alert alert-info" role="alert">
+      <strong>Seleccion:</strong> Por favor, seleccione primero un proyecto de la lista
+  </div>
+
+  <!-- creamos un formulario para seleccionar un proyecto -->
+  <form name="formProyecto" class="form-horizontal" method="post" action="{{ url_for('proyectos_seleccion_view') }}" role="form">
+    <div class="form-group">
+      <div class="col-sm-offset-3  col-sm-6">
+        <select class="form-control" name ="proyecto">  
+          {% for p in proyectos %}
+            <!--
+            <option value="{{ p.titulo }}">{{ p.id}}</li>
+            -->
+            <option value="{{ p.id }}">{{ p.titulo}}</li>
+          {% endfor %}
+        </select>   
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" value="Editar">
+			<i class="glyphicon glyphicon-ok"></i>Seleccionar proyecto
+		</button>
+      </div>
+    </div>
+  </form>  
+{% endblock %}​

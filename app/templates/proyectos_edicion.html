@@ -1,0 +1,166 @@
+{% extends "home.html" %}
+{% block proyectos_edicion %}
+	<div class="alert alert-info" role="alert">
+    	<strong>Edici&oacute;n</strong> del proyecto {{ proyecto.id }} 
+    	({{ proyecto.titulo}})
+  	</div>
+
+	<p><strong class="text-success">Creado por: </strong>{{ proyecto.profesores[0].nombre }} {{ proyecto.profesores[0].apellidos }} 
+		el {{ proyecto.fecha_oferta.strftime('%d-%m-%Y a las %H:%M horas') }}</p>
+
+	<p><strong class="text-success">Alumnos asignados: </strong>
+		{% if proyecto.alumnos|length == 0 %}
+			Ninguno
+		{% else %}
+			{% for alumno in proyecto.alumnos %}
+				{{ alumno.nombre }} {{ alumno.apellidos }},
+			{% endfor %}
+		{% endif %}  		
+	</p><br>
+
+	<form class="form-horizontal row-up" method="post" action="" role="form">
+		{{formulario_proyecto.hidden_tag()}}
+
+		<div class="form-group">
+			{{ formulario_proyecto.titulo.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.titulo(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.titulo.errors %}
+		        {% for error in formulario_proyecto.titulo.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>
+
+		<div class="form-group">
+			{{ formulario_proyecto.descripcion.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.descripcion(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.descripcion.errors %}
+		        {% for error in formulario_proyecto.descripcion.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	    
+
+		<div class="form-group">
+			{{ formulario_proyecto.plazas.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.plazas(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.plazas.errors %}
+		        {% for error in formulario_proyecto.plazas.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>
+
+		<div class="form-group">
+			{{ formulario_proyecto.estado.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.estado(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.estado.errors %}
+		        {% for error in formulario_proyecto.estado.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	
+
+		<div class="form-group">
+			{{ formulario_proyecto.nota.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.nota(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.nota.errors %}
+		        {% for error in formulario_proyecto.nota.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>
+
+		<div class="form-group">
+			{{ formulario_proyecto.matricula_honor.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.matricula_honor(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.matricula_honor.errors %}
+		        {% for error in formulario_proyecto.matricula_honor.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	
+
+		<div class="form-group">
+			{{ formulario_proyecto.fecha_evaluacion.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.fecha_evaluacion(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.fecha_evaluacion.errors %}
+		        {% for error in formulario_proyecto.fecha_evaluacion.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>
+
+		<div class="form-group">
+			{{ formulario_proyecto.lugar.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_proyecto.lugar(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_proyecto.lugar.errors %}
+		        {% for error in formulario_proyecto.lugar.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	    		    	   			    		    		 
+	
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-6">
+				<button type="submit" class="btn btn-success" value="Modificar"><i class="glyphicon glyphicon-refresh"></i>Modificar Proyecto</button>
+				<button type="button" class="btn btn-danger pull-right" onclick="location.href='{{ url_for('home_view', user = g.user) }}'">
+					<i class="glyphicon glyphicon-remove"></i>Cancelar modificaciones
+				</button>
+			</div>
+		</div>
+	</form><br>
+
+	<div class="alert alert-success" role="alert">
+		Datos del tribunal
+	</div>
+	
+	{% if not proyecto.tribunal %}
+	<p>No hay informaci&oacute;n al respecto.
+		<a href="{{ url_for('tribunal_view', proyecto = proyecto.id) }}"><strong>Completar</strong></a><br>
+	</p>
+	{% else %}
+
+	<table class="table">
+      <caption>Miembros del tribunal</caption>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+      	{% for key, value in proyecto.tribunal.miembros.iteritems() %}
+        <tr>
+          <td>{{ key }}</td>
+          <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+{% endblock %}​

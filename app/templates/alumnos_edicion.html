@@ -1,0 +1,188 @@
+{% extends "home.html" %}
+{% block alumnos_edicion %}
+
+	<div class="alert alert-info" role="alert">
+    	<strong>Edici&oacute;n</strong> del alumno {{ alumno.nombre }} {{ alumno.apellidos}} 
+  	</div>	 
+
+	<form class="form-horizontal" method="post" action="" role="form">
+		{{formulario_alumno.hidden_tag()}}
+
+		<!-- numero dni -->
+		<div class="form-group">
+			{{ formulario_alumno.dni_numero.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.dni_numero(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.dni_numero.errors %}
+		        {% for error in formulario_alumno.dni_numero.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>
+
+		<!-- letra dni -->
+		<div class="form-group">
+			{{ formulario_alumno.dni_letra.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.dni_letra(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.dni_letra.errors %}
+		        {% for error in formulario_alumno.dni_letra.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>
+
+		<!-- nombre -->
+		<div class="form-group">
+			{{ formulario_alumno.nombre.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.nombre(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.nombre.errors %}
+		        {% for error in formulario_alumno.nombre.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	
+
+		<!-- apellidos -->
+		<div class="form-group">
+			{{ formulario_alumno.apellidos.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.apellidos(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.apellidos.errors %}
+		        {% for error in formulario_alumno.apellidos.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	
+
+		<!-- numero de expediente -->
+		<div class="form-group">
+			{{ formulario_alumno.numero_expediente.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.numero_expediente(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.numero_expediente.errors %}
+		        {% for error in formulario_alumno.numero_expediente.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>											
+
+		<!-- creditos superados -->
+		<div class="form-group">
+			{{ formulario_alumno.creditos_superados.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.creditos_superados(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.creditos_superados.errors %}
+		        {% for error in formulario_alumno.creditos_superados.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>	
+
+		<!-- curso -->
+		<div class="form-group">
+			{{ formulario_alumno.curso.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.curso(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.curso.errors %}
+		        {% for error in formulario_alumno.curso.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+		</div>		
+
+		<!-- cp -->
+		<div class="form-group">
+			{{ formulario_alumno.cp.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.cp(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.cp.errors %}
+		        {% for error in formulario_alumno.cp.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}		    
+		</div>
+
+		<!-- direccion -->
+		<div class="form-group">
+			{{ formulario_alumno.direccion.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.direccion(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.direccion.errors %}
+		        {% for error in formulario_alumno.direccion.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}		    
+		</div>	
+
+		<!-- localidad -->
+		<div class="form-group">
+			{{ formulario_alumno.localidad.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.localidad(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.localidad.errors %}
+		        {% for error in formulario_alumno.localidad.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}		    
+		</div>	
+
+		<!-- provincia -->
+		<div class="form-group">
+			{{ formulario_alumno.provincia.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.provincia(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.provincia.errors %}
+		        {% for error in formulario_alumno.provincia.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}		    
+		</div>	
+
+		<!-- email -->
+		<div class="form-group">
+			{{ formulario_alumno.email.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ formulario_alumno.email(class="form-control")|safe }}
+			</div>
+		
+			{% if formulario_alumno.email.errors %}
+		        {% for error in formulario_alumno.email.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}		    
+		</div>		
+
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-6">
+				<button type="submit" class="btn btn-success" value="Modificar"><i class="glyphicon glyphicon-refresh"></i>Modificar datos</button>
+				<button type="button" class="btn btn-danger pull-right" onclick="location.href='{{ url_for('home_view', user = g.user) }}'">
+					<i class="glyphicon glyphicon-remove"></i>Cancelar modificaciones
+				</button>
+			</div>
+		</div>
+	</form>  	
+{% endblock %}​

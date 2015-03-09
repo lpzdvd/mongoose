@@ -1,0 +1,60 @@
+{% extends "home.html" %}
+{% block proyectos_baja %}
+  <div class="alert alert-info" role="alert">
+      <strong>Baja:</strong> Por favor, indique el proyecto que desea eliminar
+  </div>
+
+  <!-- creamos el formulario que pedira el proyecto a borrar -->
+  <form name="formProyecto" class="form-horizontal" method="post" action="{{ url_for('proyectos_baja_view') }}" role="form">
+    <div class="form-group">
+      <div class="col-sm-offset-3  col-sm-6">
+        <select class="form-control" name ="proyecto">  
+          {% for p in proyectos %}
+            <option value="{{ p.id }}">{{ p.titulo}}</li>
+          {% endfor %}
+        </select>   
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <!-- type de este button no puede ser submit o enviaria el formulario y queremos lanzar el modal antes -->
+        <button type="button" class="btn btn-primary modal-toggle" value="Eliminar" data-toggle="modal" data-target="#modal-dialog">
+          <i class="glyphicon glyphicon-trash"></i>Eliminar proyecto</button>
+      </div>
+    </div>
+  </form> 
+
+<p class="text-info"><strong>NOTA: </strong>Por motivos de seguridad &uacute;nicamente se muestran en este listado
+ los trabajos ofertados por el usuario <em class="text-danger">{{ g.user }}</em>
+</p>
+
+<!-- aqui el cuadro de dialogo para eliminar o cancelar -->
+<div id="modal-dialog" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+            <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+             <h3>Confirmar</h3>
+        </div>
+        <div class="modal-body">
+             <p>Seguro que desea eliminar ese proyecto?</p>
+        </div>
+        <div class="modal-footer">
+          <!--
+          <a href="#" id="btnYes" class="btn confirm">Si</a>
+          <a href="#" data-dismiss="modal" aria-hidden="true" class="btn-secondary">No</a>
+          -->
+          <button name="botonSi" type="button" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i>Eliminar</button>
+          <button name="botonNo" type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i>Cancelar</button>
+        </div>
+      </div>
+    </div>
+</div> 
+{% endblock %}
+
+{% block modal %}
+  $("button[name='botonSi']").click(function() {
+    $("form[name='formProyecto']").trigger('submit');
+  });
+{% endblock %}

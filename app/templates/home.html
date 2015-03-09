@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- necesario por estetica -->
+    <hr class="half-rule">
+
+    <div class="page-header">
+      <h1>Panel de control</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <!-- decidir si se muestra el panel de alumno o profesor -->
+            {% if user._cls == "Usuario.Profesor" %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Bienvenid@, {{ user.nombre }}</h3>
+                </div>
+                
+                <div class="panel-body">
+                    <ul class="nav nav-stacked">
+                        <!--<li class="active"> <a href="{{ url_for('home_view', user = g.user) }}"><i class="glyphicon glyphicon-home"></i> Pantalla de inicio</a></li>-->
+                        <li><a href="{{ url_for('proyectos_alta_view') }}"><i class="glyphicon glyphicon-plus"></i> Alta de proyectos</a></li>
+                        <li><a href="{{ url_for('proyectos_baja_view') }}"><i class="glyphicon glyphicon-remove"></i> Baja de proyectos</a></li>
+                        <li><a href="{{ url_for('proyectos_seleccion_view') }}"><i class="glyphicon glyphicon-pencil"></i> Editar un proyecto</a></li>
+                        <li><a href="{{ url_for('proyectos_listar_view') }}"><i class="glyphicon glyphicon-book"></i> Listar proyectos <span class="badge badge-info">{{ proyectos_totales }}</span></a></li>
+                        <li><a href="{{ url_for('logout_view') }}"><i class="glyphicon glyphicon-off"></i> Desconectar</a></li>
+                    </ul>
+                </div>     
+            </div>
+            {% else %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Bienvenid@, {{ user }}</h3>
+                </div>
+                
+                <div class="panel-body">
+                    <ul class="nav nav-stacked">
+                        <li class="active"> <a href="{{ url_for('alumnos_edicion_view', alumno = g.user) }}"><i class="glyphicon glyphicon-pencil"></i>
+                          Editar mis datos personales</a></li>
+                        <li><a href="{{ url_for('proyectos_listar_view') }}"><i class="glyphicon glyphicon-list"></i> Solicitar un proyecto</a></li>
+                        <li><a href="{{ url_for('proyectos_resumen_view') }}"><i class="glyphicon glyphicon-book"></i> Mis proyectos</a></li>
+                        <li><a href="{{ url_for('logout_view') }}"><i class="glyphicon glyphicon-off"></i> Desconectar</a></li>
+                    </ul>
+                </div>     
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-9">
+        <!-- feedback al usuario -->         
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}            
+          <!-- El siguiente bloque lo rellena cada plantilla heredada -->
+          {% block proyectos_alta %}{% endblock %}
+          {% block proyectos_baja %}{% endblock %}
+          {% block proyectos_seleccion %}{% endblock %}
+          {% block proyectos_edicion %}{% endblock %}
+          {% block proyectos_listar %}{% endblock %}
+          {% block alumnos_edicion %}{% endblock %}
+          {% block proyectos_asignacion %}{% endblock %}
+          {% block proyectos_resumen %}{% endblock %}
+          {% block tribunal %}{% endblock %}
+        </div>
+    </div>   
+{% endblock %}

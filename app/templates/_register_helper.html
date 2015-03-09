@@ -1,0 +1,335 @@
+{% macro render_field(field) %}
+
+	<!-- numero del dni -->
+	{% if field.id == 'dni_numero' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", placeholder="Introduzca únicamente el número...", **kwargs)|safe }}
+			</div>
+		
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+		
+	{% elif field.id == 'dni_letra' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+	
+	<!-- nombre  -->
+	{% elif field.id == 'nombre' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- apellidos  -->
+	{% elif field.id == 'apellidos' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- login  -->
+	{% elif field.id == 'login' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Identificador de acceso al sistema...", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- password  -->
+	{% elif field.id == 'password' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Elija una contraseña....", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+	
+	<!-- confirmar  -->
+	{% elif field.id == 'confirmar' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Repita la contraseña....", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+	
+	<!-- telefono  -->
+	{% elif field.id == 'telefono' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- cp  -->
+	{% elif field.id == 'cp' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- curso. Revisar si es correcto no usar el constructor field y las option-->
+	{% elif field.id == 'curso' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- creditos  -->
+	{% elif field.id == 'creditos_superados' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Créditos superados por el alumno..", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- expediente  -->
+	{% elif field.id == 'numero_expediente' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Número de expediente....", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- direccion  -->
+	{% elif field.id == 'direccion' %}
+		<div class="form-group">		
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Dirección del alumno durante el curso....", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- localidad  -->
+	{% elif field.id == 'localidad' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- provincia  -->
+	{% elif field.id == 'provincia' %}
+		<div class="form-group">		
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- email  -->
+	{% elif field.id == 'email' %}
+		<div class="form-group">		
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Dirección de correo electrónico durante el curso...", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- titulacion_nombre  -->
+	{% elif field.id == 'titulacion_nombre' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Titulacion que cursa el alumno...", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- titulacion_centro  -->
+	{% elif field.id == 'titulacion_centro' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Centro donde el alumno cursa estudios...", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- titulacion2_nombre  -->
+	{% elif field.id == 'titulacion2_nombre' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Solo para alumnos de Doble Grado...", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+	<!-- titulacion2_centro  -->
+	{% elif field.id == 'titulacion2_centro' %}
+		<div class="form-group">	
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Solo para alumnos de Doble Grado...", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>   
+
+	<!-- numero_proyectos  -->
+	{% elif field.id == 'numero_proyectos' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(placeholder="Proyectos a desarrollar..", class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>  	  	    	
+		
+	<!-- campos del profesor -->
+	<!-- departamento. Revisar si es correcto no usar el constructor field y las option-->
+	{% elif field.id == 'departamento' %}
+		<div class="form-group">		
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+    
+	{% endif %}		
+
+{% endmacro %}

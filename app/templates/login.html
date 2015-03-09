@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row row-login-header">
+  <h2 class="text-center">Mongoose: un espacio para profesores y alumnos</h2>
+  <p class="lead text-center">Esta aplicaci&oacute;n web forma parte de un Trabajo Fin de Grado orientado al
+  dise&ntilde;o de bases de datos NoSQL que pretende ser un ejemplo sobre c&oacute;mo este tipo de almacenes de datos
+  pueden utilizarse como alternativa de &eacute;xito en el desarrollo de todo tipo de proyectos.</p>
+  <hr class="half-rule">
+</div>
+
+<div class="row row-login">
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='img/mongodb-leaf.png') }}" class="img-responsive center-block" alt="Logo de MongoDB">
+        <h3 class="text-center">La base de datos</h3>
+        <p class="text-justify">El componente indispensable de la aplicaci&oacute;n es 
+        <a href="http://www.mongodb.org/" target="_blank">MongoDB</a>,
+        una base de datos NoSQL <em>opensource </em>
+        apoyada por una extensa comunidad y que ofrece al desarrollador una excelente documentaci&oacute;n en l&iacute;nea.</p>
+      </div>
+      
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='img/python-logo.png') }}" class="img-responsive center-block" alt="Logo de Python">
+        <h3 class="text-center">El lenguaje</h3>
+        <p class="text-justify text-grey">Todo el desarrollo esta codificado en 
+        <a href="https://www.python.org/" target="_blank">Python</a>, un lenguaje de programaci&oacute;n
+        interpretado de prop&oacute;sito general cuya filosof&iacute;a de dise&ntilde;o se orienta principalmente a
+        la legibilidad del c&oacute;digo.</p>
+      </div>
+      
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='img/bootstrap.png') }}" class="img-responsive center-block" alt="Logo de Bootstrap">
+        <h3 class="text-center">El dise&ntilde;o</h3>
+        <p class="text-justify">Intuitivo, flexible y potente, son las cualidades que han hecho de
+        <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
+        la herramienta ideal para el dise&ntilde;o de cualquier aplicaci&oacute;n web independientemente
+        de su tama&ntilde;o o complejidad.</p>
+      </div>  
+    </div>
+    
+    <div class="row row-login">
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='img/flask.png') }}" alt="Logo de Flask">
+        <h3 class="text-center">El servidor</h3>
+        <p class="text-justify">Para desplegar la aplicaci&oacute;n se ha optado por
+        <a href="http://flask.pocoo.org/" target="_blank">Flask</a>, un microframework con licencia BSD
+        inspirado en <em>Werkzeug</em> (una libreria de utilidades WSGI para Python) 
+        que destaca por ser tremendamente minimalista.
+        </p>
+      </div>
+      
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='img/jinja.png') }}" class="img-responsive center-block" alt="Logo de Jinja2">
+        <h3 class="text-center">Presentaci&oacute;n</h3>
+        <p class="text-justify">La informaci&oacute;n mostrada al usuario se estructura con
+        <a href="http://jinja.pocoo.org/docs/dev/" target="_blank">Jinja2</a>, un lenguaje
+        de plantillas HTML inspirado en Django que permite reutilizar partes del c&oacute;digo y manipular
+        din&aacute;micamente el contenido de la p&aacute;gina.
+        </p>
+      </div>  
+      
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='img/mongoengine.png') }}" class="img-responsive center-block" alt="Logo de Mongoengine">
+        <h3 class="text-center">Una capa ODM</h3>
+        <p class="text-justify text-grey">Dado el car&aacute;cter documental de MongoDB, el uso de una capa
+        ODM (Object-Document Mapper) como es el caso de 
+        <a href="http://mongoengine.org/" target="_blank">Mongoengine</a>
+        facilita la interacci&oacute;n de los modelos como documentos de la base de datos.
+        </p>
+      </div> 
+    </div>    
+{% endblock %}

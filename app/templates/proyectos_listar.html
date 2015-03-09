@@ -1,0 +1,61 @@
+{% extends "home.html" %}
+{% block proyectos_listar %}
+
+  <!-- esta vista la comparten profesores (listan todos los proyectos) y alumnos (solicitan un proyecto) -->
+  {% if user._cls == "Usuario.Profesor" %}
+    <div class="alert alert-info" role="alert">
+        <strong>Listado: </strong> Se muestran todos los proyectos dados de alta en la plataforma
+    </div>
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      <strong>Solicitud de proyectos: </strong> Puede inscribirse en aquellos proyectos no asignados con plazas disponibles
+    </div>
+    <div class="alert alert-warning" role="alert">
+      <strong>Advertencia: </strong> Los proyectos con dos plazas con un alumno ya asignado aparecen en estado 'SIN ASIGNAR'
+    </div>
+  {% endif %}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>C&oacute;digo</th>
+        <th>Titulo</th>
+        <th>Descripci&oacute;n</th>
+        <th>Estado</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in proyectos %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.titulo }}</td>
+        <td>{{ p.descripcion }}</td>
+        <td>{{ p.estado }}</td>
+        <td>
+          {% if profesor in p.profesores %}
+          <!-- redirige a la pagina de edicion de proyectos unicamente si eres el profesor que lo ha creado-->
+          <form action="{{ url_for('proyectos_edicion_view', user = g.user, proyecto = p.id) }}">
+              <button type="submit" class="btn btn-primary btn-sm" value=""><i class="glyphicon glyphicon-eye-open"></i>Ver detalles</button>
+          </form>
+          {% else %}
+            {% if user._cls == "Usuario.Profesor" %}
+              <small>No editable por este usuario</small>
+            {% else %}
+              {% if p.estado =='SIN ASIGNAR'%}
+                <form action="{{ url_for('proyectos_asignacion_view', user = g.user, proyecto = p.id) }}">
+                  <button type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i>Solicitar</button>
+                </form>
+              {% else %}
+                <form action="">
+                  <button type="submit" class="btn btn-danger btn-sm disabled"><i class="glyphicon glyphicon-ban-circle"></i>No disponible</button>
+                </form>              
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table> 
+{% endblock %}

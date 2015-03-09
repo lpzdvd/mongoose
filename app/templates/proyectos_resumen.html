@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% block proyectos_resumen %}
+
+    <div class="alert alert-info" role="alert">
+      <strong>Resumen: </strong> A continuacion puede ver la información relativa a todos los proyectos en los que esta registrado
+    </div>
+	{% for p in proyectos %}
+		<div class="panel panel-success">
+      		<div class="panel-heading">
+        		<h5 class="panel-title">{{ p.titulo }} ({{ p.estado }})</h5>
+      		</div>
+
+      		<div class="panel-body">
+      			<p>
+      				<small>
+      					<em>TFG registrado por {{ p.profesores[0].nombre }} {{ p.profesores[0].apellidos}} el
+      						{{ p.fecha_oferta.strftime('%d-%m-%Y a las %H:%M horas') }}</em>
+      				</small>
+      			</p>
+      			<p>{{p.descripcion}}</p>
+      			<p><strong>Evaluaci&oacute;n: </strong>El proyecto ser&aacute;/ha sido evaluado el {{ p.fecha_evaluacion.strftime('%d-%m-%Y a las %H:%M horas') }}
+      				en el/la {{ p.lugar }}</p>
+      			<p><strong>Calificaci&oacute;n: </strong>{{ p.nota }}
+      				{%if p.matricula_honor == True %}
+      				(Se propone para MATR&Iacute;CULA DE HONOR)
+      				{% endif %}
+      			</p>      			
+      		</div>
+      	</div>
+
+	{% endfor %}
+
+{% endblock %}​

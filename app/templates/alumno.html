@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<hr class="half-rule">
+
+<div class="page-header">
+	<h1>Registro de alumnos</h1>
+</div>
+
+<p>Por favor, cumplimente todos los campos para dar de alta a un alumno en la plataforma.</p>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+    	<form class="form-horizontal" method="post" action="alumno" role="form">
+
+    		{{form.hidden_tag()}}
+    		{% from "_register_helper.html" import render_field %}
+			{{ render_field(form.dni_numero) }}
+			{{ render_field(form.dni_letra) }}
+			{{ render_field(form.nombre) }}
+			{{ render_field(form.apellidos) }}						
+			{{ render_field(form.login) }}
+			{{ render_field(form.password) }}
+			{{ render_field(form.confirmar) }}
+			{{ render_field(form.numero_expediente) }}
+			{{ render_field(form.creditos_superados) }}
+			{{ render_field(form.curso) }}
+			{{ render_field(form.cp) }}
+			{{ render_field(form.telefono) }}
+			{{ render_field(form.direccion) }}
+			{{ render_field(form.provincia) }}
+			{{ render_field(form.localidad) }}	
+			{{ render_field(form.email) }}			
+			{{ render_field(form.titulacion_nombre) }}				
+			{{ render_field(form.titulacion_centro) }}				
+			{{ render_field(form.titulacion2_nombre) }}				
+			{{ render_field(form.titulacion2_centro) }}
+			{{ render_field(form.numero_proyectos) }}
+
+		
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-9">
+					<button type="submit" class="btn btn-primary" value="Registar">Registrar Alumno</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>		
+
+{% endblock %}

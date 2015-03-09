@@ -1,0 +1,113 @@
+/*!
+ * Bootstrap v3.2.0 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+ 
+ /* separador recortado */
+ .half-rule {
+width: 100px;
+margin: 40px auto;
+}
+
+body {
+font-family: 'Lato', Arial, serif; 
+font-weight: 400;}
+
+/* ajuste de la leyenda en la info*/
+.lead {
+max-width: 80%;
+margin-right: auto;
+margin-left: auto;}
+
+/* ajustes para los label del form */
+form label {
+font-weight: 100;
+font-size: 17px;
+}
+
+/* ajustes para el footer */
+.footer-top {
+	margin-top: 30px;
+}
+
+.footer {
+	padding: 50px 0;
+	background-color: #333;
+}
+
+.footer h3 {
+color: #FFF;
+font-weight: bold;
+font-size: 19px;
+margin-bottom: 15px;
+}
+
+.footer p, .footer a {
+color: #ADADAD;
+margin-bottom: 10px;
+}
+
+.footer-sub {
+background-color: #242424;
+padding: 10px 10px 0px 0px;
+}
+
+.contact-list li {
+color: #ADADAD;
+margin-bottom: 5px;
+}
+
+.contact-list i {
+color: #f8f8f8;
+margin: 0 5px 0 0;
+}
+
+.footer li {
+padding: 3px 0;
+font-size: 14px;
+}
+
+ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+/* color rosa del icono */
+.copyright i {
+color: #FF3D7F;
+margin: 0 5px;
+}
+
+/* ajustes para el menu lateral */
+.panel-body {
+	padding: 10px;
+}
+
+/* ajustes para los iconos */
+.glyphicon {
+	padding-right: 5px;
+}
+
+/* ajustes para las filas de la pantalla de login */	
+.row-login-header{
+	margin: 100px auto 50px auto;
+}
+
+.row-login{
+	margin: 50px auto;
+}
+
+/* iconos en linea, que rotan y ligeramente separados */
+.social-list li { display: inline; padding-right: 3px;}
+
+.spin {  
+    -webkit-transform: rotate(0deg);
+	-webkit-transition: -webkit-transform 0.5s ease-in-out;
+		}
+
+.spin:hover {
+	-webkit-transform: rotate(360deg);
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+	}

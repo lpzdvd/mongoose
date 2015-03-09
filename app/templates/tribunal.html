@@ -1,0 +1,44 @@
+{% extends "home.html" %}
+{% block tribunal %}
+
+  <div class="alert alert-info" role="alert">
+      <strong>Tribunal: </strong> Por favor, indique los miembros del tribunal para el proyecto
+      '{{ proyecto.titulo}}'
+  </div>
+
+  <form name="formTribunal" class="form-horizontal" method="post" action="" role="form">
+    {% for n in range(5) %}
+    <div class="form-group">
+
+      <div class="col-sm-offset-3 col-sm-3">
+        <select class="form-control" name="profesor-{{ n }}">  
+          {% for profesor in profesores %}
+            <option value="{{ profesor.nombre}} {{ profesor.apellidos }}">{{ profesor.nombre}} {{ profesor.apellidos }}</li>
+          {% endfor %}
+        </select>   
+      </div>
+      
+      <div class="col-sm-3">
+        <select class="form-control" name="rol-{{ n }}">  
+            <option value="Presidente">Presidente</li>
+            <option value="Vocal">Vocal</li>
+            <option value="Secretario">Secretario</li>
+            <option value="Suplente">Suplente</li>
+        </select>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="form-group">
+      <textarea class="col-sm-offset-3 col-sm-6" id="comentarios" name="comentarios" placeholder="Comentarios de interes..." rows="5"></textarea>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-3">
+        <button type="submit" class="btn btn-primary" value="Asignar">
+          <i class="glyphicon glyphicon-floppy-saved"></i>Guardar datos del tribunal
+        </button>
+      </div>
+    </div>
+  </form>   
+{% endblock %}​

@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+{% block proyectos_alta %}
+  <div class="alert alert-info" role="alert">
+      <strong>Alta:</strong> Por favor, rellene el siguiente formulario para dar de alta un nuevo proyecto
+  </div>
+  <form class="form-horizontal" method="post" action="{{ url_for('proyectos_alta_view') }}" role="form">
+    {{form.hidden_tag()}}
+    {% from "_proyecto_helper.html" import render_field %}
+    {{ render_field(proyecto.titulo) }}
+    {{ render_field(proyecto.descripcion) }}
+    {{ render_field(proyecto.plazas) }}       
+    
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" value="Registrar"><i class="glyphicon glyphicon-floppy-saved"></i> Guardar proyecto</button>
+      </div>
+    </div>
+  </form>  
+{% endblock %}

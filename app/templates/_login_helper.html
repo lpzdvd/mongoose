@@ -1,0 +1,9 @@
+{% macro render_field(field) %}
+
+	{% if field.id == 'login' %}
+		{{ field(placeholder="Usuario", class="form-control", **kwargs)|safe }}
+	{% elif field.id == 'password' %}
+		{{ field(placeholder="Password", class="form-control", **kwargs)|safe }}
+	{% endif %}
+
+{% endmacro %}

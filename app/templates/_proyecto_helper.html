@@ -1,0 +1,50 @@
+{% macro render_field(field) %}
+
+	<!-- titulo del proyecto -->
+	{% if field.id == 'titulo' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", placeholder="Introduzca el título del proyecto...", **kwargs)|safe }}
+			</div>
+		
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+    <!-- descripcion del proyecto -->
+	{% elif field.id == 'descripcion' %}
+		<div class="form-group">		
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", placeholder="Introduzca la descripción...", rows = 5, **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>
+
+    <!-- numero de plazas  -->
+	{% elif field.id == 'plazas' %}
+		<div class="form-group">
+			{{ field.label(class="col-sm-3 control-label text-muted") }}
+			<div class="col-sm-6">
+				{{ field(class="form-control", **kwargs)|safe }}
+			</div>
+
+			{% if field.errors %}
+		        {% for error in field.errors %}
+					<span class="label label-danger">{{ error }}</span>
+		        {% endfor %}
+		    {% endif %}
+    	</div>    
+    
+	{% endif %}		
+
+{% endmacro %}
