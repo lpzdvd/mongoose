@@ -1,4 +1,3 @@
 .DS_Store
 app/*.pyc
-env/*
-env/bin
+env/
