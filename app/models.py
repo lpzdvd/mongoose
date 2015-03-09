@@ -69,7 +69,7 @@ class Alumno (Usuario):
     titulaciones = ListField(EmbeddedDocumentField(Titulacion))
     #relacion con proyectos
     #proyectos = ListField(ReferenceField('Proyecto', reverse_delete_rule= NULLIFY))
-    numero_proyectos = IntField (choices = (1, 2), default = 1)
+    numero_proyectos = IntField (choices = (0, 1, 2), default = 1)
 
     meta =  {
                 'indexes':  [

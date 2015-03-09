@@ -4,14 +4,14 @@
   <!-- esta vista la comparten profesores (listan todos los proyectos) y alumnos (solicitan un proyecto) -->
   {% if user._cls == "Usuario.Profesor" %}
     <div class="alert alert-info" role="alert">
-        <strong>Listado: </strong> Se muestran todos los proyectos dados de alta en la plataforma
+        <strong>Oferta de proyectos: </strong>Puede editar aquellos proyectos que haya ofertado como profesor
     </div>
   {% else %}
     <div class="alert alert-info" role="alert">
-      <strong>Solicitud de proyectos: </strong> Puede inscribirse en aquellos proyectos no asignados con plazas disponibles
+      <strong>Solicitud de proyectos: </strong> Por favor, solicite aquellos proyectos que desee desarrollar
     </div>
     <div class="alert alert-warning" role="alert">
-      <strong>Advertencia: </strong> Los proyectos con dos plazas con un alumno ya asignado aparecen en estado 'SIN ASIGNAR'
+      <strong>Advertencia: </strong> Los proyectos que deben ser desarrollados por dos estudiantes y ya han sido asignados a un primer alumno siguen apareciendo con la etiqueta 'SIN ASIGNAR'
     </div>
   {% endif %}
 

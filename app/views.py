@@ -296,7 +296,7 @@ def alumnos_edicion_view(alumno):
         a.save()
 
         # informar
-        mensaje = 'Se han editado satisfactoriamente los datos de' + " " + str(a.nombre) + " " + str(a.apellidos)
+        mensaje = 'Se han editado satisfactoriamente los datos del usuario ' + str (g.user)
         flash(mensaje)
         return redirect(url_for('home_view', user = g.user))
 
@@ -320,7 +320,7 @@ def proyectos_asignacion_view(proyecto):
 
     if a.numero_proyectos == 0:
         # redirigir al home
-        mensaje = 'No puedes ser asignado a mas proyectos'
+        mensaje = 'El alumno no puede ser asignado a mas proyectos'
         flash(mensaje)
         return redirect(url_for('home_view', user = g.user))
 
@@ -338,7 +338,7 @@ def proyectos_asignacion_view(proyecto):
         a.reload()        
 
         # informar
-        mensaje = 'Has sido asignado al proyecto'
+        mensaje = 'El alumno ha sido asignado al proyecto'
         flash(mensaje)
         return redirect(url_for('home_view', user = g.user))
 
